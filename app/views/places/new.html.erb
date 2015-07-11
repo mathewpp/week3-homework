@@ -1,0 +1,18 @@
+<% if @place == nil 
+	@place = Place.create(title: "", photo_url: "", admission_price: "", description: "")
+%>
+	<h2>Add a New Place</h2>
+<%
+else
+%>
+<h2>Edit Place</h2>
+<%end%>
+
+<form action="/places/submit_new">
+	<p><span class="class">Title:</span><input name="title" type="text" value="<%=@place.title%>" required maxsize="30" size="30"></p>
+	<p><span class="class">Photo URL:</span> <input name="photo_url" type="text" value="<%=@place.photo_url%>" required maxsize="200" size="100"></p>  
+	<p><span class="class">Price:</span><input name="admission_price" type="text" value="<%=@place.admission_price%>" required></p>
+	<p><span class="class">Description:</span></p>
+	<p><textarea name="description" type="text" required rows="4" cols="50"><%=@place.description%></textarea></p>
+	<p><input type="submit"></p>
+</form>

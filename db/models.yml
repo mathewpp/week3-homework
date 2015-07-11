@@ -1,0 +1,5 @@
+Place
+  title: string 
+  photo_url: string 
+  admission_price: integer
+  description: text
