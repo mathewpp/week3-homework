@@ -95,3 +95,268 @@ ActionView::Template::Error (SQLite3::SQLException: no such table: places: SELEC
   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)[0m  [["admission_price", 20], ["description", "A visit to Black Creek Pioneer Village is a step back in time to 19th-century Ontario. Forty authentically restored homes, workshops, public buildings and farms recreate the atmosphere of life in a rural Victorian community of the 1860s. Craftspeople and workers wearing period costumes demonstrate skills such as open-hearth cooking, bread-making, looming, milling, blacksmithing, sewing, printing and more. The Event Pavilion opens its doors to a host of possibilities for Black Creek Pioneer Village. The covered pavilion includes a stage, seating for up to 300 people and a snack bar. In the past it was home to the Métis Arts Festival and the Celtic Sounds Festival. The Bolton Shop showcases the history of photography and techniques used in the 1860s in a 19th century studio. The studio has family-friendly activities and the opportunity to strike a pose."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2015/05/blackcreek-174x116.jpg"], ["title", "Black Creek Pioneer Village"]]
   [1m[35m (0.7ms)[0m  commit transaction
   [1m[36mPlace Load (0.3ms)[0m  [1mSELECT "places".* FROM "places"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:08:37 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (1.6ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (26.8ms)
+Completed 200 OK in 1383ms (Views: 1353.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/places/new" for 127.0.0.1 at 2015-07-14 17:08:42 -0500
+Processing by PlacesController#new as HTML
+  Rendered places/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/places/submit_new?title=Steam+Whistle+Brewery&photo_url=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-l%2F01%2Ff0%2F54%2F4f%2Fsteam-whistle-brewery.jpg&admission_price=10&description=++sdfsf%0D%0A++AAA%0D%0A++AA%0D%0A&commit=submit" for 127.0.0.1 at 2015-07-14 17:09:09 -0500
+Processing by PlacesController#create as HTML
+  Parameters: {"title"=>"Steam Whistle Brewery", "photo_url"=>"http://media-cdn.tripadvisor.com/media/photo-l/01/f0/54/4f/steam-whistle-brewery.jpg", "admission_price"=>"10", "description"=>"  sdfsf\r\n  AAA\r\n  AA\r\n", "commit"=>"submit"}
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)[0m  [["admission_price", 10], ["description", "  sdfsf\r\n  AAA\r\n  AA\r\n"], ["photo_url", "http://media-cdn.tripadvisor.com/media/photo-l/01/f0/54/4f/steam-whistle-brewery.jpg"], ["title", "Steam Whistle Brewery"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:09:09 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 40ms (Views: 39.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/7" for 127.0.0.1 at 2015-07-14 17:09:11 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 7 LIMIT 1
+  Rendered places/show.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 49ms (Views: 40.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/7/edit" for 127.0.0.1 at 2015-07-14 17:09:12 -0500
+Processing by PlacesController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT  "places".* FROM "places"  WHERE "places"."id" = 7 LIMIT 1[0m
+  Rendered places/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 36ms (Views: 34.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/7/update?title=Steam+Whistle+Brewery1&photo_url=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-l%2F01%2Ff0%2F54%2F4f%2Fsteam-whistle-brewery.jpg&admission_price=11&description=%3Cp%3E++B%0D%0A%3Cbr+%2F%3E+C%0D%0A%3Cbr+%2F%3E++D%0D%0A%3C%2Fp%3E&commit=submit" for 127.0.0.1 at 2015-07-14 17:09:36 -0500
+Processing by PlacesController#update as HTML
+  Parameters: {"title"=>"Steam Whistle Brewery1", "photo_url"=>"http://media-cdn.tripadvisor.com/media/photo-l/01/f0/54/4f/steam-whistle-brewery.jpg", "admission_price"=>"11", "description"=>"<p>  B\r\n<br /> C\r\n<br />  D\r\n</p>", "commit"=>"submit", "id"=>"7"}
+  [1m[35mPlace Load (0.7ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 7 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "places" SET "admission_price" = ?, "description" = ?, "title" = ? WHERE "places"."id" = 7  [["admission_price", 11], ["description", "<p>  B\r\n<br /> C\r\n<br />  D\r\n</p>"], ["title", "Steam Whistle Brewery1"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:09:36 -0500
+Processing by PlacesController#index as HTML
+  [1m[35mPlace Load (0.3ms)[0m  SELECT "places".* FROM "places"
+  Rendered places/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 61ms (Views: 59.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/places/7" for 127.0.0.1 at 2015-07-14 17:09:37 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT  "places".* FROM "places"  WHERE "places"."id" = 7 LIMIT 1[0m
+  Rendered places/show.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 47ms (Views: 45.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/7/edit" for 127.0.0.1 at 2015-07-14 17:09:40 -0500
+Processing by PlacesController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 7 LIMIT 1
+  Rendered places/edit.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 33ms (Views: 31.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/7/update?title=Steam+Whistle+Brewery1&photo_url=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-l%2F02%2F6d%2F12%2F67%2Fedge-walk-at-the-cn-tower.jpg&admission_price=11&description=%3Cp%3E%3Cp%3E++B%0D%0A%3Cbr+%2F%3E%3Cbr+%2F%3E+C%0D%0A%3Cbr+%2F%3E%3Cbr+%2F%3E++D%0D%0A%3Cbr+%2F%3E%3C%2Fp%3E%3C%2Fp%3E&commit=submit" for 127.0.0.1 at 2015-07-14 17:09:46 -0500
+Processing by PlacesController#update as HTML
+  Parameters: {"title"=>"Steam Whistle Brewery1", "photo_url"=>"http://media-cdn.tripadvisor.com/media/photo-l/02/6d/12/67/edge-walk-at-the-cn-tower.jpg", "admission_price"=>"11", "description"=>"<p><p>  B\r\n<br /><br /> C\r\n<br /><br />  D\r\n<br /></p></p>", "commit"=>"submit", "id"=>"7"}
+  [1m[36mPlace Load (0.3ms)[0m  [1mSELECT  "places".* FROM "places"  WHERE "places"."id" = 7 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "places" SET "description" = ?, "photo_url" = ? WHERE "places"."id" = 7[0m  [["description", "<p><p>  B\r\n<br /><br /> C\r\n<br /><br />  D\r\n<br /></p></p>"], ["photo_url", "http://media-cdn.tripadvisor.com/media/photo-l/02/6d/12/67/edge-walk-at-the-cn-tower.jpg"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:09:46 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 33ms (Views: 31.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/7/delete" for 127.0.0.1 at 2015-07-14 17:09:51 -0500
+Processing by PlacesController#delete as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM "places" WHERE "places"."id" = 7
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:09:51 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 42ms (Views: 41.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/new" for 127.0.0.1 at 2015-07-14 17:20:47 -0500
+Processing by PlacesController#new as HTML
+  Rendered places/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 29ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:20:51 -0500
+Processing by PlacesController#index as HTML
+  [1m[35mPlace Load (0.2ms)[0m  SELECT "places".* FROM "places"
+  Rendered places/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 37ms (Views: 36.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/1" for 127.0.0.1 at 2015-07-14 17:20:52 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPlace Load (0.3ms)[0m  [1mSELECT  "places".* FROM "places"  WHERE "places"."id" = 1 LIMIT 1[0m
+  Rendered places/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/places/1/edit" for 127.0.0.1 at 2015-07-14 17:20:53 -0500
+Processing by PlacesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 1 LIMIT 1
+  Rendered places/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/1/update?title=CN+Tower&photo_url=http%3A%2F%2Ftorontodotcomassets.s3.amazonaws.com%2Fwp-content%2Fuploads%2F2013%2F02%2F610919-324776_7-174x116.jpg&admission_price=50&description=The+CN+Tower+is+Toronto%E2%80%99s+tallest+and+most+defining+landmark.+Photos+of+Toronto+are+often+defined+by+the+building%2C+which+stretches+more+than+550+metres+into+the+sky.%0D%0AToday%2C+aside+from+serving+as+a+hub+for+telecommunications+across+the+city%2C+the+CN+Tower+has+become+a+major+tourist+destination.+Visitors+can+test+their+courage+by+walking+across+the+glass+floor+113+stories+above+the+ground.+The+first+of+its+kind+in+the+world%2C+the+glass+floor+gives+you+that+dare-to-walk-on-air+experience%2C+with+only+2.5+inches+of+glass+holding+you+342+metres+in+the+air.+The+glass+floor+is+actually+stronger+than+most+commercial+floors+and+has+the+strength+to+hold+38%2C556+kg+%2885%2C000+lbs%29+or+14+hippos%21+Or%2C+if+you+dare%2C+travel+higher+up+the+tower+to+the+Sky+Pod%2C+another+33+storeys+above+ground.&commit=submit" for 127.0.0.1 at 2015-07-14 17:21:52 -0500
+Processing by PlacesController#update as HTML
+  Parameters: {"title"=>"CN Tower", "photo_url"=>"http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2013/02/610919-324776_7-174x116.jpg", "admission_price"=>"50", "description"=>"The CN Tower is Toronto’s tallest and most defining landmark. Photos of Toronto are often defined by the building, which stretches more than 550 metres into the sky.\r\nToday, aside from serving as a hub for telecommunications across the city, the CN Tower has become a major tourist destination. Visitors can test their courage by walking across the glass floor 113 stories above the ground. The first of its kind in the world, the glass floor gives you that dare-to-walk-on-air experience, with only 2.5 inches of glass holding you 342 metres in the air. The glass floor is actually stronger than most commercial floors and has the strength to hold 38,556 kg (85,000 lbs) or 14 hippos! Or, if you dare, travel higher up the tower to the Sky Pod, another 33 storeys above ground.", "commit"=>"submit", "id"=>"1"}
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT  "places".* FROM "places"  WHERE "places"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "places" SET "description" = ? WHERE "places"."id" = 1[0m  [["description", "The CN Tower is Toronto’s tallest and most defining landmark. Photos of Toronto are often defined by the building, which stretches more than 550 metres into the sky.\r\nToday, aside from serving as a hub for telecommunications across the city, the CN Tower has become a major tourist destination. Visitors can test their courage by walking across the glass floor 113 stories above the ground. The first of its kind in the world, the glass floor gives you that dare-to-walk-on-air experience, with only 2.5 inches of glass holding you 342 metres in the air. The glass floor is actually stronger than most commercial floors and has the strength to hold 38,556 kg (85,000 lbs) or 14 hippos! Or, if you dare, travel higher up the tower to the Sky Pod, another 33 storeys above ground."]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:21:52 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.6ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 44ms (Views: 42.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/places/1" for 127.0.0.1 at 2015-07-14 17:21:54 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 1 LIMIT 1
+  Rendered places/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 35ms (Views: 33.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "places" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "places" ADD "title" varchar(255)
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "places" ADD "photo_url" varchar(255)[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "places" ADD "admission_price" integer
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "places" ADD "description" text[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.3ms)[0m  DELETE FROM "places"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)  [["admission_price", 50], ["description", "The CN Tower is Toronto’s tallest and most defining landmark. Photos of Toronto are often defined by the building, which stretches more than 550 metres into the sky.\nToday, aside from serving as a hub for telecommunications across the city, the CN Tower has become a major tourist destination. Visitors can test their courage by walking across the glass floor 113 stories above the ground. The first of its kind in the world, the glass floor gives you that dare-to-walk-on-air experience, with only 2.5 inches of glass holding you 342 metres in the air. The glass floor is actually stronger than most commercial floors and has the strength to hold 38,556 kg (85,000 lbs) or 14 hippos! Or, if you dare, travel higher up the tower to the Sky Pod, another 33 storeys above ground."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2013/02/610919-324776_7-174x116.jpg"], ["title", "CN Tower"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)[0m  [["admission_price", 65], ["description", "Canada’s Wonderland is Canada’s first and largest theme park featuring over 200 attractions, 68 thrilling rides, North America’s greatest variety of roller coasters, Splash Works, a 20-acre water park and live shows. At 306 feet (93.27 m) in the air, Leviathan is the tallest ride in the park, dropping riders at an intense 80 degree angle. Across the way, Behemoth has eight extreme drops, open air seating, high speed twists, turns and loops. The daring may want to be lifted 23 stories high and then dropped at 100 kilometres per hour aboard Drop Tower. Not to be outdone are Vortex, Canada’s first suspended roller coaster, an intense corkscrew design in The Bat, Skyrider’s shark curves and side-winding helix (standing up of course), Dragon Fire’s two 360-degree loops, the trek through Wonder Mountain aboard Thunder Run, Windseeker, a 301 ft swing ride, and let’s not forget the coaster that lives up to its name, The Mighty Canadian Minebuster, the largest and longest wooden coaster in Canada."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2013/02/723185-424996_31-174x116.jpg"], ["title", "Canada’s Wonderland"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)  [["admission_price", 30], ["description", "Harbourfront Centre is a year-round facility, featuring concerts, dance performances, readings, films and kids’ shows every weekend and many weeknights throughout the year. The centre puts a large emphasis on culturally diverse acts, and the corporate community’s involvement enables an incredible draw of international talent. Harbourfront Centre has several major venues for music, dance and cultural events, in and around two major multi-use buildings. The Queens Quay Terminal houses a wide variety of shops and services. The York Quay Centre houses an art gallery, installations, the Lakeside Terrace, a patio and an information booth. There is also a large pond that doubles as a seasonal, outdoor skating rink."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2014/01/Harbourfront-Centre-patio-174x116.jpg"], ["title", "Harbourfront Centre"]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)[0m  [["admission_price", 40], ["description", "Generations of children and adults have trooped through the museum since it first opened in 1914. With six million objects in its collections and 40 galleries of art, archaeology and natural science, the ROM offers a whole world to explore. Four giant carved totem poles rise in the centre of the stairwells; the largest is 24.5 metres (over 80 ft.) tall. The hands-on Biodiversity gallery offers families a fun interactive experience about the interdependence of people, animals and plants. The dramatic Michael Lee-Chin Crystal expansion houses six permanent collection galleries that feature many objects never before displayed, along with some old favourites. They include dinosaurs and mammals, the cultures of South and Central Asia, Africa, the American continents, the Asia-Pacific region (including Oceania) along with textiles and costumes from around the world."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2013/02/643390-357337_31-174x116.jpg"], ["title", "Royal Ontario Museum (ROM)"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)  [["admission_price", 30], ["description", "Medieval Times Dinner & Tournament is a living link to the past where the glory, chivalry and valor of old burst to life in authentic tournament action. While guests enjoy a four-course banquet served medieval style, six brave knights compete in games of skill astride magnificent Andalusian stallions. Lances splinter against steel shields, broad swords spark and a champion emerges, to the cheers of the enthusiastic crowd. The spectacle unfolds nightly inside a fully enclosed European-style castle. Surprisingly odorless, (due to the crushed granite on which the action takes place), the Grand Ceremonial Arena offers seating for up to 1,400 guests. The Knight Club, offering full bar service, comes to life each evening after the final performance giving guests the opportunity to meet the show cast, take pictures, get autographs and dance to selections from the medieval jukebox. Other features include a medieval-themed Convention Hall available for all types of corporate, school, team and special events. Vegetarian, Halal and Kosher meals available."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2013/03/391132_10150993591595048_1262466797_n-174x116.jpg"], ["title", "Medieval Times Toronto"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "places" ("admission_price", "description", "photo_url", "title") VALUES (?, ?, ?, ?)[0m  [["admission_price", 20], ["description", "A visit to Black Creek Pioneer Village is a step back in time to 19th-century Ontario. Forty authentically restored homes, workshops, public buildings and farms recreate the atmosphere of life in a rural Victorian community of the 1860s. Craftspeople and workers wearing period costumes demonstrate skills such as open-hearth cooking, bread-making, looming, milling, blacksmithing, sewing, printing and more. The Event Pavilion opens its doors to a host of possibilities for Black Creek Pioneer Village. The covered pavilion includes a stage, seating for up to 300 people and a snack bar. In the past it was home to the Métis Arts Festival and the Celtic Sounds Festival. The Bolton Shop showcases the history of photography and techniques used in the 1860s in a 19th century studio. The studio has family-friendly activities and the opportunity to strike a pose."], ["photo_url", "http://torontodotcomassets.s3.amazonaws.com/wp-content/uploads/2015/05/blackcreek-174x116.jpg"], ["title", "Black Creek Pioneer Village"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:24:34 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.4ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 37ms (Views: 34.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/places/1" for 127.0.0.1 at 2015-07-14 17:24:35 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 1 LIMIT 1
+  Rendered places/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:24:37 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 32ms (Views: 31.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/2" for 127.0.0.1 at 2015-07-14 17:24:38 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 2 LIMIT 1
+  Rendered places/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 46ms (Views: 44.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:24:40 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.3ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/places/3" for 127.0.0.1 at 2015-07-14 17:24:41 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 3 LIMIT 1
+  Rendered places/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 35ms (Views: 30.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:24:44 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/places/4" for 127.0.0.1 at 2015-07-14 17:24:44 -0500
+Processing by PlacesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPlace Load (0.2ms)[0m  SELECT  "places".* FROM "places"  WHERE "places"."id" = 4 LIMIT 1
+  Rendered places/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 35ms (Views: 33.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-14 17:24:46 -0500
+Processing by PlacesController#index as HTML
+  [1m[36mPlace Load (0.2ms)[0m  [1mSELECT "places".* FROM "places"[0m
+  Rendered places/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 35ms (Views: 34.4ms | ActiveRecord: 0.2ms)
+  [1m[36mPlace Load (0.3ms)[0m  [1mSELECT "places".* FROM "places"[0m
