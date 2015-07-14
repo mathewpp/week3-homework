@@ -1,0 +1,18 @@
+<h2>Edit Place</h2>
+
+<form action="/places/<%= @place.id %>/update">
+
+	<p><span class="class">Title:</span>
+	<%= text_field_tag :title, (@place.title or ""), size:30, maxsize:30, required:true %></p>
+
+	<p><span class="class">Photo URL:</span> 
+	<%= text_field_tag :photo_url, (nil or @place.photo_url or ""), size:100, maxsize:200, required:true %></p>
+
+	<p><span class="class">Price:</span>
+	<%= text_field_tag :admission_price, (@place.admission_price or 0), required:true %></p>  		
+
+	<p><span class="class">Description:</span></p>
+	<%= text_area_tag :description, (simple_format(@place.description) or ""), rows:4, cols:50, required:true %></p>  		
+
+	<p><%= submit_tag "submit" %></p>
+</form>

@@ -1,9 +1,9 @@
   <h2><%= @place.title %></h2>
 
   <p>
-    <span class="admission">Admission Price: <%= @place.admission_price %></span>
+    <span class="admission">Admission Price: <%= number_to_currency(@place.admission_price) %></span>
     <%= link_to "Edit", "/places/#{@place.id}/edit" %>
   </p>
 
 <%= image_tag @place.photo_url %>
-<%= @place.description %>
+<%= simple_format(@place.description) %>

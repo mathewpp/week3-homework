@@ -19,11 +19,11 @@ class PlacesController < ApplicationController
 
  def edit
  	@place = Place.find_by(:id => params["id"])
-    render "new"
  end
 
  def update
- 	Place.update(title: params["title"], 
+ 	@place = Place.find_by(:id => params["id"])
+ 	@place.update(title: params["title"], 
  				 photo_url: params["photo_url"], 
 			 	 admission_price: params["admission_price"], 
 			 	 description: params["description"])
